@@ -37,15 +37,7 @@ function setup(){
     noStroke();
     randomSeed(99);
 
-        // //Generate random fill values
-        // myRed = random(150,255);
-        // myGreen = random(100,230)
-        // myBlue = random(170,255);
-    
-        // //Generate random ellipse size
-        // myDiameter = 10;
-
-        mazePath();
+    mazePath();
 }
 
 function draw(){
@@ -93,7 +85,7 @@ let mouseData = {
 function drawPos(pos) {
   fill(255, 255, 0);
   noStroke();
-  circle(pos.x, pos.y, 50);
+  circle(pos.x, pos.y, 30);
 }
 
 // function drawEllipse(obj) {
