@@ -39,6 +39,7 @@ function draw(){
   background(220);
   drawCircles();
   touchCircles();
+}
 
       // Listen for positive events
       socket.on('positiveEvent', ({ user1, user2 }) => {
@@ -62,7 +63,6 @@ function draw(){
           console.log(midpoint);
           drawPos(midpoint);
         });
-}
 
 function mouseMoved() {
   //Grab mouse position
