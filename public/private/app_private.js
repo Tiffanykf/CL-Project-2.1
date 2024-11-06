@@ -32,12 +32,22 @@ let passwords = [
 
 let circles = [];
 
+// button.addEventListener('click', ()=>{
+//   button.style.display = 'none';
+//   })
+
 function setup(){
     createCanvas(windowWidth, windowHeight);
     noStroke();
     randomSeed(99);
 
     mazePath();
+
+    // start = createButton('Start In Top Left Corner');
+    // start.buttonPressed(()=>{
+    //   start.style.display = 'none';
+    // })
+
 }
 
 function draw(){
@@ -56,7 +66,7 @@ function draw(){
          // Clear any existing timeout to prevent premature pausing
         clearTimeout(pauseTimeout);
 
-        // Set a timeout to pause the audio after 3 seconds if no new event is received
+        // Set a timeout to pause the audio after half a second if no new event is received
         pauseTimeout = setTimeout(() => {
         duke2.pause();
         }, 500); // 500 milliseconds = .5 second
@@ -85,7 +95,7 @@ let mouseData = {
 function drawPos(pos) {
   fill(255, 255, 0);
   noStroke();
-  circle(pos.x, pos.y, 15);
+  circle(pos.x, pos.y, 30);
 }
 
 // function drawEllipse(obj) {

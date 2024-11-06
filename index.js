@@ -110,7 +110,7 @@ private.on("connection", (socket) => {
                         private.to(socket.room).emit('positiveEvent', { user1: socket.id, user2: id });
                         console.log(`Positive event between ${socket.id} and ${id}`);
                         let midpoint = getMidpoint(mouseData.x, mouseData.y, pos.x, pos.y);
-                        private.to(socket.room).emit('midpoint', midpoint);
+                        private.to(socket.room).emit('midpoint', {midpoint});
                         console.log(midpoint); 
                       }
                     }
