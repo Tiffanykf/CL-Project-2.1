@@ -99,19 +99,19 @@ private.on("connection", (socket) => {
                   let distance = getDistance(mouseData.x, mouseData.y, pos.x, pos.y);
                   let pairKey = getPairKey(socket.id, id);
 
-                  if (distance <= 50) {
-                    //Start tracking the time if the users are within 50 pixels
+                  if (distance <= 100) {
+                    //Start tracking the time if the users are within 100 pixels
                     if (!timer[pairKey]){
                       timer[pairKey] = Date.now();
                     }else{
                       let elapsed = Date.now() - timer[pairKey];
-                      if (elapsed >= 3000) {
+                      if (elapsed >= 1000) {
                         if (socket.room){
                         private.to(socket.room).emit('positiveEvent', { user1: socket.id, user2: id });
-                        console.log(`Positive event between ${socket.id} and ${id}`);
+                        // console.log(`Positive event between ${socket.id} and ${id}`);
                         let midpoint = getMidpoint(mouseData.x, mouseData.y, pos.x, pos.y);
-                        private.to(socket.room).emit('midpoint', {midpoint});
-                        console.log(midpoint); 
+                        private.to(socket.room).emit('midpoint', midpoint);
+                        // console.log(midpoint); 
                       }
                     }
                     }
