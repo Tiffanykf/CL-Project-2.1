@@ -85,7 +85,7 @@ let mouseData = {
 function drawPos(pos) {
   fill(255, 255, 0);
   noStroke();
-  circle(pos.x, pos.y, 30);
+  circle(pos.x, pos.y, 15);
 }
 
 // function drawEllipse(obj) {
