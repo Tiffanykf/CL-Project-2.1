@@ -8,13 +8,8 @@ socket.on('connect', () => {
   console.log("Connected");
 });
 
- //Listen for an event named 'message-share' from the server
-//  socket.on('message-share', (data) => {
-//   drawEllipse(data);
-// });
 
 //global variables
-// let myRed, myGreen, myBlue;
 let myDiameter = 10;
 let duke2 = document.querySelector('#audio')
 let drop = document.querySelector('#audio2')
@@ -32,22 +27,12 @@ let passwords = [
 
 let circles = [];
 
-// button.addEventListener('click', ()=>{
-//   button.style.display = 'none';
-//   })
-
 function setup(){
     createCanvas(windowWidth, windowHeight);
     noStroke();
     randomSeed(99);
 
     mazePath();
-
-    // start = createButton('Start In Top Left Corner');
-    // start.buttonPressed(()=>{
-    //   start.style.display = 'none';
-    // })
-
 }
 
 function draw(){
@@ -74,7 +59,7 @@ function draw(){
 
         //Listen for midpoint data
         socket.on('midpoint', function(midpoint) {
-          // console.log(midpoint);
+          console.log(midpoint);
           drawPos(midpoint);
         });
 }
@@ -95,14 +80,8 @@ let mouseData = {
 function drawPos(pos) {
   fill(255, 255, 0);
   noStroke();
-  circle(pos.x, pos.y, 30);
+  circle(pos.x, pos.y, 25);
 }
-
-// function drawEllipse(obj) {
-//   fill(255,255,0);
-//   // noStroke();
-//   ellipse(obj.x, obj.y, obj.d, obj.d);
-// }
 
 function touchCircles() {
   for (let i = 0; i < circles.length; i++) {
@@ -124,7 +103,7 @@ function touchCircles() {
       // console.log(`Circle ${i} touched!`);
     }
   }
-}
+}  
 
 function mazePath() {
   let protection = 0;
@@ -185,10 +164,3 @@ if (roomName){
 else {
     alert("Please refresh and enter a room name");
 }
-
-
-// //Listen for an event named 'message-share' from the server
-// socket.on('message-share', (data) => {
-//     console.log(data);
-  
-//   });
