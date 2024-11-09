@@ -43,13 +43,6 @@ function getPairKey(id1, id2) {
 io.on("connection", (socket) => {
   console.log("We have a new client: " + socket.id);
 
-    // //Listen for an event named 'message' from client
-    // socket.on('message2', (data) => {
-
-    //   //Send data to ALL clients, including this one
-    //   io.emit('message-share', data);
-    // });
-
   //Listen for this client to disconnect
   socket.on("disconnect", () => {
     console.log("A client has disconnected: " + socket.id);
@@ -64,7 +57,6 @@ let private = io.of('/private');
 private.on("connection", (socket) => {
   console.log("We have a new client: " + socket.id);
 
-  //Listen for messages from the client
   // Store the user's initial position
   mazers[socket.id] = { x: 0, y: 0 };
 
@@ -78,17 +70,6 @@ private.on("connection", (socket) => {
     socket.join(roomName);
   });
 
-  // //Listen for an event named 'message' from client
-  // socket.on('message2', (data) => {
-
-  //   //Send data to ALL clients, including this one
-  //   // private.emit('message-share', data);
-
-    // let currentRoom = socket.room
-  //   private.to(currentRoom).emit('message-share', data);
-
-  // });
-
   // Listen for mouse position updates from the client
   socket.on('message', (mouseData) => {
     mazers[socket.id] = mouseData;
@@ -99,8 +80,8 @@ private.on("connection", (socket) => {
                   let distance = getDistance(mouseData.x, mouseData.y, pos.x, pos.y);
                   let pairKey = getPairKey(socket.id, id);
 
-                  if (distance <= 100) {
-                    //Start tracking the time if the users are within 100 pixels
+                  if (distance <= 75) {
+                    //Start tracking the time if the users are within 75 pixels
                     if (!timer[pairKey]){
                       timer[pairKey] = Date.now();
                     }else{
@@ -122,14 +103,6 @@ private.on("connection", (socket) => {
               }
           }
 
-//Send data to ALL clients, including this one
-// io.emit('message-share', data);
-
-//Send data to ALL other clients but the sender
-// socket.broadcast.emit('message-share', data);
-
-//Send the data just to the sender
-// socket.emit('message-share', data);
 });
 
   //Listen for this client to disconnect
